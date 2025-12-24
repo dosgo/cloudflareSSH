@@ -23,10 +23,7 @@ func startProxy(tcpPort string, hostName string) {
 	defer listener.Close()
 
 	log.Printf("TCP服务器启动在 %s，等待连接...", tcpPort)
-
-
 	stopChan = make(chan struct{})
-
 
 	for {
 		select {

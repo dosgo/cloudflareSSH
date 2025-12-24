@@ -42,7 +42,6 @@ func NewCloudflaredSSH(hostname string) (*CloudflaredSSH, error) {
 
 // 实现 io.Reader 接口（读取 stdout）
 func (c *CloudflaredSSH) Read(p []byte) (n int, err error) {
-
     return c.stdout.Read(p)
 }
 
@@ -53,11 +52,8 @@ func (c *CloudflaredSSH) Write(p []byte) (n int, err error) {
 
 // 实现 io.Closer 接口
 func (c *CloudflaredSSH) Close() error {
-   
-    
     // 关闭 stdin
     c.stdin.Close()
-    
     // 等待进程结束
     return c.cmd.Wait()
 }
